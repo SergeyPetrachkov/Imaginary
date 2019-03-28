@@ -1,5 +1,4 @@
 import Foundation
-import Cache
 
 /// Option applied when fetching image
 public struct Option {

@@ -1,7 +1,7 @@
 import Foundation
 
 /// Result for fetching
-public enum Result {
+public enum ImaginaryResult {
   case value(Image)
   case error(Error)
 }

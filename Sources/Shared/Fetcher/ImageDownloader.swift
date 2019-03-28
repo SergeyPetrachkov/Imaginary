@@ -20,7 +20,7 @@ public class ImageDownloader {
 
   // MARK: - Operation
 
-  public func download(url: URL, completion: @escaping (Result) -> Void) {
+  public func download(url: URL, completion: @escaping (ImaginaryResult) -> Void) {
     active = true
 
     let request = modifyRequest(URLRequest(url: url))

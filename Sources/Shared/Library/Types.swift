@@ -17,4 +17,4 @@
   public typealias Button = UIButton
 #endif
 
-public typealias Completion = (Result) -> Void
+public typealias Completion = (ImaginaryResult) -> Void

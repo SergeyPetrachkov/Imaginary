@@ -1,5 +1,4 @@
 import XCTest
-import Cache
 @testable import Imaginary
 
 private final class ImageFetcherTests: XCTestCase {

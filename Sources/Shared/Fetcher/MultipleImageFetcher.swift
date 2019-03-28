@@ -17,13 +17,13 @@ public class MultipleImageFetcher {
   ///   - each: Called after each fetcher completed
   ///   - completion: Called after all fetchers completed
   public func fetch(urls: [URL],
-                    each: ((Result) -> Void)? = nil,
-                    completion: (([Result]) -> Void)? = nil) {
+                    each: ((ImaginaryResult) -> Void)? = nil,
+                    completion: (([ImaginaryResult]) -> Void)? = nil) {
     self.fetchers = urls.map { _ in
       return self.fetcherMaker()
     }
 
-    var results: [Result] = []
+    var results: [ImaginaryResult] = []
 
     zip(fetchers, urls).forEach { fetcher, url in
       fetcher.fetch(url: url, completion: { result in

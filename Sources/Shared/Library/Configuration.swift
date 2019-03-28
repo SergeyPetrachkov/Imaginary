@@ -1,4 +1,3 @@
-import Cache
 
 #if os(iOS) || os(tvOS)
 import UIKit

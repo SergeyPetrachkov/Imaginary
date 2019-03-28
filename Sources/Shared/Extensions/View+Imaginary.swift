@@ -1,5 +1,4 @@
 import Foundation
-import Cache
 
 extension View {
   /// Set image with url
@@ -48,7 +47,7 @@ extension View {
     }
   }
 
-  private func handle(url: URL, result: Result,
+  private func handle(url: URL, result: ImaginaryResult,
                       option: Option, completion: Completion?) {
 
     defer {

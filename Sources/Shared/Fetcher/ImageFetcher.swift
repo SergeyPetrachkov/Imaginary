@@ -1,5 +1,4 @@
 import Foundation
-import Cache
 
 /// Fetch image for you so that you don't have to think.
 /// It can be fetched from storage or network.
@@ -27,7 +26,7 @@ public class ImageFetcher {
   /// - Parameters:
   ///   - url: The url to fetch.
   ///   - completion: The callback upon completion.
-  public func fetch(url: URL, completion: @escaping (Result) -> Void) {
+  public func fetch(url: URL, completion: @escaping (ImaginaryResult) -> Void) {
     // Check if we should ignore storage
     guard let storage = storage else {
       if url.isFileURL {
@@ -59,7 +58,7 @@ public class ImageFetcher {
 
   // MARK: - Helper
 
-  private func fetchFromNetwork(url: URL, completion: @escaping (Result) -> Void) {
+  private func fetchFromNetwork(url: URL, completion: @escaping (ImaginaryResult) -> Void) {
     downloader.download(url: url, completion: { [weak self] result in
       guard let `self` = self else {
         return
@@ -76,7 +75,7 @@ public class ImageFetcher {
     })
   }
 
-  private func fetchFromDisk(url: URL, completion: @escaping (Result) -> Void) {
+  private func fetchFromDisk(url: URL, completion: @escaping (ImaginaryResult) -> Void) {
     DispatchQueue.global(qos: .utility).async {
       [weak self] in
       guard let `self` = self else {
@@ -95,7 +94,7 @@ public class ImageFetcher {
       }
 
       // Try saving to storage
-      try? self.storage?.setObject(image, forKey: url.absoluteString)
+      ((try? self.storage?.setObject(image, forKey: url.absoluteString)) as ()??)
       completion(.value(image))
     }
   }
